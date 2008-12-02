@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AppContent version="1.1">
+  <FileSystem systemName="treefs[org.netbeans.modules.javacvs.JavaCvsFileSystem /home/slepp/Projects/nmGPS:res/">
+    <File name="/nmGPS.png" />
+    <File name="/c-nmGPS.png" />
+    <File name="/menuBackground.png" />
+    <File name="/s-nmGPS.png" />
+    <File name="/satellite_off.png" />
+    <File name="/satellite_on.png" />
+    <File name="/z-nmGPS.png" />
+  </FileSystem>
+  <FileSystem systemName="treefs[org.netbeans.modules.javacvs.JavaCvsFileSystem /home/slepp/Projects/nmGPS:src/">
+    <File name="/ca" />
+    <File name="/com" />
+  </FileSystem>
+  <Filter common="Default" />
+  <Jar compressLevel="9" compress="true" />
+  <Descriptor descriptorType="jad" />
+  <Content>
+    <Param name="MIDlet-Info-URL" value="http://www.netmonks.ca/projects/nmgps/" jad="true" manifest="true" required="false" user="false" />
+    <Param name="MIDlet-Install-Notify" value="" jad="true" manifest="true" required="false" user="false" />
+    <Param name="MIDlet-Vendor" value="NetMonks Consulting" jad="true" manifest="true" required="true" user="false" />
+    <Param name="MicroEdition-Configuration" value="CLDC-1.0" jad="true" manifest="true" required="true" user="false" />
+    <Param name="MIDlet-Jar-URL" value="nmGPS.jar" jad="true" manifest="false" required="true" user="false" />
+    <Param name="MicroEdition-Profile" value="MIDP-2.0" jad="true" manifest="true" required="true" user="false" />
+    <Param name="MIDlet-Icon" value="nmGPS.png" jad="true" manifest="true" required="false" user="false" />
+    <Param name="MIDlet-Data-Size" value="14367" jad="true" manifest="true" required="false" user="false" />
+    <Param name="MIDlet-Description" value="Online GPS Tracking and Logging" jad="true" manifest="true" required="false" user="false" />
+    <Param name="MIDlet-Name" value="NetMonks GPS" jad="true" manifest="true" required="true" user="false" />
+    <Param name="MIDlet-Version" value="0.8.0" jad="true" manifest="true" required="true" user="false" />
+    <Param name="MIDlet-Jar-Size" value="45403" jad="true" manifest="false" required="true" user="false" />
+    <Param name="MIDlet-Delete-Confirm" value="" jad="true" manifest="true" required="false" user="false" />
+    <Param name="midlet" midletorder="1" midletname="NetMonks GPS" midleticon="nmGPS.png" midletclass="ca.netmonks.j2me.gpsmidlet.GPSMIDlet" />
+  </Content>
+  <Obfuscator obfuscated="false" />
+</AppContent>
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build" name="nmGPS">
+
+    <!-- Define the Wireless Toolkit home directory. Needed by the tasks. -->
+
+    <property name="wtk.home" value="/opt/j2mewtk-2.1"/>
+    <property name="wtk.midpapi" value="${wtk.home}/lib/i730.jar"/>
+    <property name="wtk.emptyapi" value="${wtk.home}/wtklib/emptyapi.zip"/>
+    
+    <!-- Define some additional properties for this project. -->
+
+    <property name="midlet.name" value="nmGPS"/>
+    <property name="midlet.home" value="/home/slepp/Projects/nmGPS"/>
+
+    <!-- Define deployment properties. Assumes a Tomcat on Port 8080 and
+         the default login/password. Adjust this to your local settings. -->
+
+    <property name="deploy.target" value="http://www.netmonks.ca:8080/antenna"/>
+    <property name="deploy.login" value="slepp"/>
+    <property name="deploy.password" value="lukwai"/>
+
+    <!-- Define the tasks. -->
+	
+    <taskdef resource="antenna.properties"/>
+	
+	<!-- Cleanup -->
+	
+	<target name="clean">
+	    <delete dir="build" failonerror="false"/>
+	</target>
+	
+    <target name="build">
+
+        <!-- Copy a JAD file from the WTK's demo applications.
+             Caution: Ant only copies this the first time. Also
+             make a directory to compile into. -->
+             
+        <copy file="${midlet.home}/${midlet.name}.jad" todir="build"/>
+        <mkdir dir="build/classes"/>
+
+        <!-- Compile everything, but don't preverify (yet). -->
+
+        <wtkbuild destdir="build/classes" preverify="false" srcdir="${midlet.home}/src" debug="false"/>
+
+        <!-- Package the MIDlet suite. -->
+
+        <wtkpackage autoversion="true" jadfile="build/${midlet.name}.jad" jarfile="build/${midlet.name}.jar" obfuscate="true">
+
+            <!-- Package our newly compiled classes and the
+                 resources from the WTK's demo application. -->
+
+            <fileset dir="build/classes"/>
+            <fileset dir="${midlet.home}/res"/>
+            
+            <preserve class="com.motorola.lwt.PopUpCommandListener"/>
+
+        </wtkpackage>
+
+		<!-- Preverify the MIDlet suite. -->
+		
+        <wtkpreverify jadfile="build/${midlet.name}.jad" jarfile="build/${midlet.name}.jar"/>
+    		
+    	<!-- Deploy the MIDlet suite -->
+
+    	<wtkdeploy jadfile="build/${midlet.name}.jad" jarfile="build/${midlet.name}.jar" login="${deploy.login}" password="${deploy.password}" target="${deploy.target}"/>
+
+    </target>
+
+</project>
